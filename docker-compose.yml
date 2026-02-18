@@ -1,0 +1,50 @@
+version: "3.9"
+
+services:
+  xio:
+    build: .
+    container_name: xio
+    ports:
+      - "${SERVER_PORT:-3001}:3001"
+    volumes:
+      - ./storage:/app/storage
+      - ./.env:/app/.env
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - chroma
+    restart: unless-stopped
+    networks:
+      - xio-net
+
+  chroma:
+    image: chromadb/chroma:0.5.23
+    container_name: xio-chroma
+    ports:
+      - "8000:8000"
+    volumes:
+      - chroma-data:/chroma/chroma
+    restart: unless-stopped
+    networks:
+      - xio-net
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: xio-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    restart: unless-stopped
+    networks:
+      - xio-net
+    profiles:
+      - local-llm
+
+volumes:
+  chroma-data:
+  ollama-data:
+
+networks:
+  xio-net:
+    driver: bridge
