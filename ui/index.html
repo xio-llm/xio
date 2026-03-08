@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Xio</title>
+  <link rel="stylesheet" href="/assets/style.css" />
+</head>
+<body>
+  <div id="app">
+    <aside id="sidebar">
+      <div class="sidebar-header">
+        <h1 class="logo">xio</h1>
+        <span class="version">v2.1</span>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>Workspaces</h3>
+        <ul id="workspace-list"></ul>
+        <button id="new-workspace" class="btn-ghost">+ New workspace</button>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>Conversations</h3>
+        <ul id="conversation-list"></ul>
+      </div>
+
+      <div class="sidebar-footer">
+        <button id="settings-btn" class="btn-ghost">Settings</button>
+        <div id="wallet-badge" class="wallet-badge hidden">
+          <span class="dot"></span>
+          <span id="wallet-address"></span>
+        </div>
+      </div>
+    </aside>
+
+    <main id="content">
+      <div id="welcome" class="center-content">
+        <h2>Welcome to Xio</h2>
+        <p>Create or select a workspace to get started.</p>
+        <p class="muted">Drop files, paste URLs, or just ask questions.</p>
+      </div>
+
+      <div id="chat-view" class="hidden">
+        <div id="messages"></div>
+        <div id="sources-bar" class="hidden">
+          <span class="sources-label">Sources:</span>
+          <div id="sources-list"></div>
+        </div>
+        <form id="chat-form">
+          <div class="input-row">
+            <input
+              type="text"
+              id="chat-input"
+              placeholder="Ask anything about your documents..."
+              autocomplete="off"
+            />
+            <button type="submit" class="btn-primary">Send</button>
+          </div>
+          <div class="input-actions">
+            <label class="upload-btn">
+              <input type="file" id="file-upload" accept=".pdf,.docx,.doc,.txt,.csv,.md,.json" hidden />
+              Upload file
+            </label>
+            <button type="button" id="scrape-btn" class="btn-ghost">Scrape URL</button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <div id="modal-overlay" class="hidden">
+    <div id="modal" class="modal">
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <script src="/assets/app.js"></script>
+</body>
+</html>
