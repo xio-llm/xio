@@ -101,6 +101,8 @@ server/
 
 ## Agent Wallet
 
+`6XCQ1vtasaudCXQBAtwyyaextAnwMMb99gKjZ6KBhV56`
+
 Xio includes an autonomous Solana wallet that can:
 - Hold and send SOL and SPL tokens
 - Process credit deposits (SOL to credits conversion)
